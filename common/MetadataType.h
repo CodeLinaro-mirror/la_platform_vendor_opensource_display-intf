@@ -136,7 +136,7 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Interlaced strategy defined by video.
    * Functions supported: getMetadata, setMetadata
    */
-  PP_PARAM_INTERLACED = 10002,
+  MD_PP_PARAM_INTERLACED = 10002,
   /**
    * Set by camera to indicate buffer will be used for high performance video use case.
    * Functions supported: getMetadata, setMetadata
@@ -163,12 +163,12 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Used for GPU post processing to determine when to map secure buffer.
    * Functions supported: getMetadata, setMetadata
    */
-  MAP_SECURE_BUFFER = 10007,
+  MD_MAP_SECURE_BUFFER = 10007,
   /**
    * Used if VENUS output buffer is linear for UBWC interlaced video.
    * Functions supported: getMetadata, setMetadata
    */
-  LINEAR_FORMAT = 10008,
+  MD_LINEAR_FORMAT = 10008,
   /**
    * Set by graphics to indicate that this buffer will be written to but not swapped out.
    * Functions supported: getMetadata, setMetadata

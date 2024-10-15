@@ -27,7 +27,7 @@
  * IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  * Changes from Qualcomm Innovation Center are provided under the following license:
- * Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) 2023-2024 Qualcomm Innovation Center, Inc. All rights reserved.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 
@@ -365,6 +365,9 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat {
   NV12_UBWC_FLEX_2_BATCH = 0x128,
   NV12_UBWC_FLEX_4_BATCH = 0x129,
   NV12_UBWC_FLEX_8_BATCH = 0x130,
+  NV12_FLEX_2_BATCH = 0x140,
+  NV12_FLEX_4_BATCH = 0x141,
+  NV12_FLEX_8_BATCH = 0x142,
   /* --------------------------------------------------------------------------------*/
 
 } vendor_qti_hardware_display_common_PixelFormat;

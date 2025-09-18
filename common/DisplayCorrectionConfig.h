@@ -34,6 +34,7 @@ typedef struct vendor_qti_hardware_display_common_DisplayCorrectionConfig {
 
   DistortionConfig distortion;
   V53SPRConfig v53spr;
+  bool enable_gpu_timer = false;
 
   template <typename T>
   static bool CorrectionEnabledForLayer(const T &correction,

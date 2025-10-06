@@ -24,7 +24,7 @@ typedef struct vendor_qti_hardware_display_common_DistortionMesh {
       p.x = (p.x + 1.0f) * 0.5f;
     }; // [-1,1] -> [ 0,1]
     auto uv_left = [](auto &uv) {
-      uv.u = (1.0 - uv.u) * 0.5;
+      uv.u = uv.u * 0.5;
     }; // [0,1] -> [0, 0.5]
     auto uv_right = [](auto &uv) {
       uv.u = 0.5 + uv.u * 0.5;

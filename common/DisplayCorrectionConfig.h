@@ -5,23 +5,34 @@
 #define __COMMON_DISPLAYCORRECTIONCONFIG_H__
 
 #include <string>
+#include <set>
+#include <memory>
+
+#include "DistortionMesh.h"
 /**
  * Display correction config.
  */
 
 typedef struct vendor_qti_hardware_display_common_DisplayCorrectionConfig {
-  vendor_qti_hardware_display_common_DisplayCorrectionConfig &operator=(
-      const vendor_qti_hardware_display_common_DisplayCorrectionConfig &) =
-      default;
 
   // Handle all correction types
+  struct DistortionConfig {
+    inline static const char *name = "Distortion";
+    bool enable;
+    std::set<std::string> excluded_layer_keywords;
+    std::string filepath;
+    std::shared_ptr<vendor_qti_hardware_display_common_DistortionMesh> mesh;
+  };
+
   struct V53SPRConfig {
     inline static const char *name = "V53SPR";
     bool enable;
-    std::vector<std::string> excluded_layer_keywords;
+    std::set<std::string> excluded_layer_keywords;
     int32_t flip_x;
     int32_t flip_y;
   };
+
+  DistortionConfig distortion;
   V53SPRConfig v53spr;
 
   template <typename T>
@@ -41,10 +52,9 @@ typedef struct vendor_qti_hardware_display_common_DisplayCorrectionConfig {
 
   bool CorrectionsEnabled() const {
     // Handle all correction types (e.g. type1.enable || type2.enable || ...)
-    return v53spr.enable;
+    return v53spr.enable || distortion.enable;
   }
 
-  void DebugPrint() const;
 } vendor_qti_hardware_display_common_DisplayCorrectionConfig;
 
 #endif // __COMMON_DISPLAYCORRECTIONCONFIG_H__

@@ -20,7 +20,7 @@ typedef struct vendor_qti_hardware_display_common_DisplayCorrectionConfig {
     inline static const char *name = "Distortion";
     bool enable;
     std::set<std::string> excluded_layer_keywords;
-    std::string filepath;
+    std::string filepath_left, filepath_right;
     std::shared_ptr<vendor_qti_hardware_display_common_DistortionMesh> mesh;
   };
 

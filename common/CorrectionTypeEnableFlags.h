@@ -10,12 +10,14 @@
  */
 
 typedef struct vendor_qti_hardware_display_common_CorrectionTypeEnableFlags {
-  bool v53spr;
+  bool v53spr = false;
+  bool distortion = false;
 
   inline bool
   operator==(const vendor_qti_hardware_display_common_CorrectionTypeEnableFlags
                  other) {
-    return this->v53spr == other.v53spr;
+    return (this->v53spr == other.v53spr) &&
+           (this->distortion == other.distortion);
   }
   inline bool
   operator!=(const vendor_qti_hardware_display_common_CorrectionTypeEnableFlags
@@ -23,7 +25,7 @@ typedef struct vendor_qti_hardware_display_common_CorrectionTypeEnableFlags {
     return !(*this == other);
   }
 
-  operator bool() { return this->v53spr; }
+  operator bool() { return this->v53spr || this->distortion; }
 } vendor_qti_hardware_display_common_CorrectionTypeEnableFlags;
 
 #endif // __COMMON_CORRECTIONTYPEENABLEFLAGS_H__

@@ -120,6 +120,9 @@ typedef enum vendor_qti_hardware_display_common_BufferUsage : uint64_t {
 
   /* Batch mode commit use case */
   QTI_PRIVATE_BATCH_COMMIT = 1ULL << 61,
+
+  /* This flag is used to indicate cloned multiview use case */
+  QTI_PRIVATE_CLONED_MULTI_VIEW_INFO = 1ULL << 62,
 } vendor_qti_hardware_display_common_BufferUsage;
 
 inline vendor_qti_hardware_display_common_BufferUsage operator|(

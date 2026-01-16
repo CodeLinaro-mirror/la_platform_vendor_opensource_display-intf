@@ -375,6 +375,11 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   YCBCR_P010_HEIF = 0x151, // YCBCR_P010_512
   YCBCR_P010_1024 = 0x152,
   NV12_1024 = 0x153,
+
+  TP10_UBWC_FLEX = 0x154,
+  TP10_UBWC_FLEX_2_BATCH = 0x155,
+  TP10_UBWC_FLEX_4_BATCH = 0x156,
+  TP10_UBWC_FLEX_8_BATCH = 0x157,
   /* --------------------------------------------------------------------------------*/
 
 } vendor_qti_hardware_display_common_PixelFormat;

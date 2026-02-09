@@ -105,7 +105,8 @@ typedef enum vendor_qti_hardware_display_common_BufferUsage : uint64_t {
   /* UBWC - NV12 4R */
   QTI_ALLOC_UBWC_4R = 1ULL << 55,
 
-  /* Bit 56 is reserved */
+  /* GPU reserved subsampling bit */
+  GPU_SUBSAMPLE_ENABLED = 1ULL << 56,
 
   /* UBWC - 2:1 compression ratio */
   QTI_ALLOC_UBWC_L_2_TO_1 = 1ULL << 57,
@@ -116,7 +117,8 @@ typedef enum vendor_qti_hardware_display_common_BufferUsage : uint64_t {
   /* UBWC - 8:5 compression ratio */
   QTI_ALLOC_UBWC_L_8_TO_5 = 1ULL << 59,
 
-  /* Bit 60 is reserved */
+  /* GPU reserved subsampling bit */
+  GPU_SUBSAMPLE_OFFSET_ENABLED = 1ULL << 60,
 
   /* Batch mode commit use case */
   QTI_PRIVATE_BATCH_COMMIT = 1ULL << 61,

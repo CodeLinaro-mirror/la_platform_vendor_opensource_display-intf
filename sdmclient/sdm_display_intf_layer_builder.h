@@ -188,6 +188,47 @@ public:
                                             CornerRadius corner_radius) {
     return kErrorNone;
   };
+
+#ifdef LSR_API
+  virtual DisplayError SetRenderLayerReferenceSpaceType(
+      uint64_t display, int64_t layer,
+      SDMRenderLayerReferenceSpaceType reference_layer_space_type) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetCompositionLayerType(uint64_t display, int64_t layer,
+                          SDMCompositionLayerType comp_layer_type) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerPose(uint64_t display, int64_t layer,
+                                    SDMLayerPose layer_pose) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerQuadSize(uint64_t display, int64_t layer,
+                                        SDMLayerQuadSize layer_quad_size) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerFrustum(uint64_t display, int64_t layer,
+                                       SDMLayerFrustum layer_frustum) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetLayerPlaneEquation(uint64_t display, int64_t layer,
+                        SDMLayerPlaneEquation plane_equation) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetLayerVisibilityType(uint64_t display, int64_t layer,
+                         SDMLayerVisibilityType layer_visibility_type) {
+    return kErrorNone;
+  };
+#endif
 };
 
 } // namespace sdm

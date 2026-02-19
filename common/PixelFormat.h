@@ -385,7 +385,11 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   BAYER16_UBWC = 0x158,
   TBAYER10_UBWC = 0x159,
   GBR16_UBWC = 0x160,
-  GBRTP10_UBWC = 0x161
+  GBRTP10_UBWC = 0x161,
+  P210_UBWC_FLEX = 0x162,
+  P210_UBWC_FLEX_2_BATCH = 0x163,
+  P210_UBWC_FLEX_4_BATCH = 0x164,
+  P210_UBWC_FLEX_8_BATCH = 0x165,
 
 } vendor_qti_hardware_display_common_PixelFormat;
 

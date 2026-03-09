@@ -29,6 +29,7 @@
 #include <unordered_set>
 
 #include <SnapHandle.h>
+#include <color_metadata.h>
 #include <core/buffer_allocator.h>
 #include <core/sdm_types.h>
 
@@ -229,6 +230,11 @@ public:
     return kErrorNone;
   };
 #endif
+
+  virtual DisplayError SetLayerLuts(uint64_t display, int64_t layer,
+                                    Lut3d *luts) {
+    return kErrorNone;
+  };
 };
 
 } // namespace sdm

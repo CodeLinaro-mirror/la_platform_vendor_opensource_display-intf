@@ -392,7 +392,13 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * ROI metadata,
    * Functions supported: getMetadata, setMetadata
    */
-  ROI_RECT_METADATA = 10053
+  ROI_RECT_METADATA = 10053,
+  /**
+   * Phase of the disparity buffer.
+   * Default value is 0.
+   * Functions supported: getMetadata, setMetadata
+   */
+  DISPARITY_PHASE = 10054
 
 } vendor_qti_hardware_display_common_MetadataType;
 

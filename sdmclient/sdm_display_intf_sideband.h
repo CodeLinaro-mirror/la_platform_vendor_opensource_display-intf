@@ -30,7 +30,6 @@
 #include <core/layer_buffer.h>
 
 #include "sdm_display_intf_parcel.h"
-#include "sdm_compositor_sideband_cb_intf.h"
 
 namespace sdm {
 
@@ -79,23 +78,6 @@ public:
 
   virtual DisplayError SetPoseConfig(uint64_t disp_id, void *buffer) {
     return kErrorNone;
-  }
-
-  /**
-   * Post a buffer with ownership tracking for concurrent write-back operations.
-   *
-   * @param cwb_config: Configuration for concurrent write-back
-   * @param buffer: Buffer to be posted
-   * @param display_type: Type of display for the operation
-   * @param owner: Callback interface for ownership tracking
-   *
-   * @return: DisplayError status code
-   */
-  virtual DisplayError PostBufferWithOwner(const CwbConfig &cwb_config,
-                                           void *buffer, int32_t display_type,
-                                           SDMSideBandCompositorCbIntf *owner) {
-    // Default: delegate to PostBuffer, ignoring owner
-    return PostBuffer(cwb_config, buffer, display_type);
   }
 };
 

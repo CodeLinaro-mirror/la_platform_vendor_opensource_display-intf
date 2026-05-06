@@ -382,7 +382,23 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * VIEW_ID metadata,
    * Functions supported: getMetadata, setMetadata
    */
-  VIEW_ID = 10051
+  VIEW_ID = 10051,
+  /**
+   * Concurrent Write Back Metadata
+   * Functions supported: getMetadata, setMetadata
+   */
+  CWB_METADATA = 10052,
+  /**
+   * ROI metadata,
+   * Functions supported: getMetadata, setMetadata
+   */
+  ROI_RECT_METADATA = 10053,
+  /**
+   * Phase of the disparity buffer.
+   * Default value is 0.
+   * Functions supported: getMetadata, setMetadata
+   */
+  DISPARITY_PHASE = 10054
 
 } vendor_qti_hardware_display_common_MetadataType;
 

@@ -456,6 +456,11 @@ public:
                                           float min_luminance) {
     return kErrorNone;
   }
+  virtual DisplayError PerformDynamicCac(uint64_t disp_id,
+                                         DynamicCacV2Config cac_config,
+                                         bool enable) {
+    return kErrorNone;
+  }
 };
 
 } // namespace sdm

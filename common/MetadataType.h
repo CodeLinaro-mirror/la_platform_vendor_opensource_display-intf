@@ -387,8 +387,24 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Concurrent Write Back Metadata
    * Functions supported: getMetadata, setMetadata
    */
-  CWB_METADATA = 10052
-
+  CWB_METADATA = 10052,
+  /**
+   * ROI metadata,
+   * Functions supported: getMetadata, setMetadata
+   */
+  ROI_RECT_METADATA = 10053,
+  /**
+   * Phase of the disparity buffer.
+   * Default value is 0.
+   * Functions supported: getMetadata, setMetadata
+   */
+  DISPARITY_PHASE = 10054,
+   /**
+   * Custom Tuning metadata set by camera and read by video,
+   * as defined in vendor_qti_hardware_display_common_CustomTuningMetadata
+   * Functions supported: getMetadata, setMetadata
+   */
+  CUSTOM_TUNING_METADATA = 10055
 } vendor_qti_hardware_display_common_MetadataType;
 
 #endif  // __COMMON_METADATATYPE_H__

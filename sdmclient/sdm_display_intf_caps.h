@@ -277,6 +277,8 @@ public:
   virtual DisplayError GetDisplayPortId(uint32_t disp_id, int *port_id) = 0;
 
   virtual DisplayError IsCacV2Supported(uint32_t disp_id, bool *supported) = 0;
+
+  virtual bool IsPluggablePrimary() const = 0;
 };
 
 } // namespace sdm

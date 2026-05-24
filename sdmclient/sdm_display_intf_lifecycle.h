@@ -32,6 +32,7 @@
 #include "debug_callback_intf.h"
 #include "sdm_compositor_cb_intf.h"
 #include "sdm_compositor_sideband_cb_intf.h"
+#include "sdm_display_intf_layer_builder.h"
 
 using std::shared_ptr;
 
@@ -40,6 +41,13 @@ namespace sdm {
 enum CompositorSyncType {
   CompositorSyncTypeAcquire,
   CompositorSyncTypeRelease,
+};
+
+// Client for the SDM SideBandCallback
+enum SideBandCallbackClient {
+  kDefaultIntf,        // No client connected
+  kDisplayConfig,      // IDisplayConfig
+  kAmbientDataCapture, // IAmbientDataCapture
 };
 
 class SDMDisplayLifeCycleIntf {
@@ -159,7 +167,35 @@ public:
                          SDMDisplayDeviceConfig sdm_display_device_config) {
     return kErrorNone;
   };
+#else
+  // Stub: SDMDisplayDeviceConfig is only functional when LSR_API is defined.
+  // This definition exists solely to allow compilation without LSR_API.
+  struct SDMDisplayDeviceConfig {
+    int32_t temp;  // Placeholder; not functionally used without LSR_API
+  };
+
+  virtual DisplayError
+  SetDisplayDeviceConfigEx(uint64_t display,
+                           SDMDisplayDeviceConfig sdm_display_device_config) {
+    return kErrorNone;
+  };
 #endif
+
+  /**
+   * Register a sideband callback with extended interface type support.
+   *
+   * @param cb: Callback interface for sideband compositor operations
+   * @param enable: True to register, false to unregister the callback
+   * @param intf_type: Type of sideband callback client interface
+   *
+   * @return: void
+   */
+  virtual void RegisterSideBandCallbackEx(SDMSideBandCompositorCbIntf *cb,
+                                          bool enable,
+                                          SideBandCallbackClient intf_type) {
+    // Default: delegate to base registration, ignoring intf_type
+    RegisterSideBandCallback(cb, enable);
+  };
 };
 
 } // namespace sdm

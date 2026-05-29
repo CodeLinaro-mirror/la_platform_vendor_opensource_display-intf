@@ -20,7 +20,7 @@
 /*
  * Changes from Qualcomm Innovation Center are provided under the following license:
  *
- * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 #ifndef __SDM_COMPOSITOR_SIDEBAND_CB_INTF_H__
@@ -32,6 +32,14 @@
 #define NUM_HISTOGRAM_COLOR_COMPONENTS 4
 
 namespace sdm {
+
+enum FeatenablerCommand {
+  kListInstalledFeatures = 2,
+  kValidateLicense = 3,
+  kEnableAllFeatures = 4,
+  kListEnabledFeatures = 5,
+  kValidateAndEnable = 6,
+};
 
 class SDMSideBandCompositorCbIntf {
 public:
@@ -90,6 +98,8 @@ public:
   virtual nsecs_t SystemTime(int clock) = 0;
   virtual int GetDemuraFilePaths(const GenericPayload &in,
                                  GenericPayload *out) = 0;
+
+  virtual DisplayError SendFeatenablerCommand(FeatenablerCommand cmd) { return kErrorNone; }
 };
 
 } // namespace sdm

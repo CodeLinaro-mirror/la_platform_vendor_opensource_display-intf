@@ -18,9 +18,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * ​​​​​Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 #ifndef __SDM_COMPOSITOR_CB_INTF_H__
@@ -34,20 +33,22 @@ class SDMCompositorCbIntf {
 public:
   virtual ~SDMCompositorCbIntf() {}
 
-  virtual void OnHotplug(uint64_t in_display, bool in_connected) = 0;
+  virtual void OnHotplug(uint64_t in_display, bool in_connected) {}
 
-  virtual void OnRefresh(uint64_t in_display) = 0;
+  virtual void OnRefresh(uint64_t in_display) {}
 
   virtual void OnVsync(uint64_t in_display, int64_t in_timestamp,
-                       int32_t in_vsync_period_nanos) = 0;
+                       int32_t in_vsync_period_nanos) {}
 
-  virtual void OnSeamlessPossible(uint64_t in_display) = 0;
+  virtual void OnSeamlessPossible(uint64_t in_display) {}
 
-  virtual void OnVsyncIdle(uint64_t in_display) = 0;
+  virtual void OnVsyncIdle(uint64_t in_display) {}
 
   virtual void
   OnVsyncPeriodTimingChanged(uint64_t in_display,
-                             const SDMVsyncPeriodChangeTimeline &timeline) = 0;
+                             const SDMVsyncPeriodChangeTimeline &timeline) {}
+
+  virtual void onHdcpLevelsChanged(uint64_t display, int32_t min_enc_level) {}
 };
 
 } // namespace sdm

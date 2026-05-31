@@ -18,11 +18,11 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
+
 #ifndef __SDM_DISPLAY_INTF_SETTINGS_H__
 #define __SDM_DISPLAY_INTF_SETTINGS_H__
 
@@ -387,8 +387,8 @@ public:
   virtual DisplayError SetColorTransform(uint64_t display,
                                          const std::vector<float> &matrix) = 0;
 
-  virtual DisplayError SetDisplayBrightness(Display display,
-                                            float brightness) = 0;
+  virtual DisplayError SetDisplayBrightness(Display display, float brightness,
+                                            bool performing_commit) = 0;
 
   virtual DisplayError SetCursorPosition(Display display, LayerId layer,
                                          int32_t x, int32_t y) = 0;
@@ -441,12 +441,33 @@ public:
   virtual DisplayError GetActiveBuiltinDisplay(uint64_t *disp_id) = 0;
 
   virtual int GetDisplayConfigGroup(uint64_t display, DisplayConfigGroupInfo variable_config) = 0;
-  
+
   virtual DisplayError SetupVRRConfig(uint64_t display_id) = 0;
 
   virtual int GetNotifyEptConfig(uint64_t display) = 0;
 
   virtual DisplayError PerformCacConfig(uint64_t disp_id, CacConfig cac_config, bool enable) = 0;
+
+  virtual DisplayError GetDisplayBrightnessSupport(Display display, bool *outSupport) = 0;
+
+  virtual DisplayError SetHdrCapabilities(uint64_t display,
+                                          const std::vector<Hdr> &hdr_types,
+                                          float max_avg_luminance,
+                                          float min_luminance) {
+    return kErrorNone;
+  }
+  virtual DisplayError PerformDynamicCac(uint64_t disp_id,
+                                         DynamicCacV2Config cac_config,
+                                         bool enable) {
+    return kErrorNone;
+  }
+
+  virtual int GetDisplayConfigGroup(uint64_t display,
+                                    DisplayConfigGroupInfo variable_config,
+                                    uint32_t fps) {
+    return 0;
+  };
+
 };
 
 } // namespace sdm

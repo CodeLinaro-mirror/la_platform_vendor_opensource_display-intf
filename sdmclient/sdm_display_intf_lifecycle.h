@@ -18,9 +18,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Technologies, Inc. are provided under the following
+ * license: Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 #ifndef __SDM_DISPLAY_INTF_LIFECYCLE_H__
@@ -33,6 +32,7 @@
 #include "debug_callback_intf.h"
 #include "sdm_compositor_cb_intf.h"
 #include "sdm_compositor_sideband_cb_intf.h"
+#include "sdm_display_intf_layer_builder.h"
 
 using std::shared_ptr;
 
@@ -43,10 +43,22 @@ enum CompositorSyncType {
   CompositorSyncTypeRelease,
 };
 
+// Client for the SDM SideBandCallback
+enum SideBandCallbackClient {
+  kDefaultIntf,        // No client connected
+  kDisplayConfig,      // IDisplayConfig
+  kAmbientDataCapture, // IAmbientDataCapture
+};
+
 class SDMDisplayLifeCycleIntf {
 public:
   SDMDisplayLifeCycleIntf() {}
   virtual ~SDMDisplayLifeCycleIntf(){};
+
+  /**
+   * De-initialize and cleanup sdmclient
+   **/
+  virtual DisplayError Deinit() = 0;
 
   virtual void RegisterSideBandCallback(SDMSideBandCompositorCbIntf *cb,
                                         bool enable) = 0;
@@ -145,7 +157,45 @@ public:
   virtual DisplayError TryDrawMethod(Display display,
                                      DisplayDrawMethod drawMethod) = 0;
 
-  virtual void CompositorSync(CompositorSyncType syncType) = 0;
+  virtual void CompositorSync(CompositorSyncType syncType) {}
+
+  // Per-display overload for MULTI_THREADED_PRESENT support.
+  virtual void CompositorSync(uint64_t display, CompositorSyncType syncType) {}
+#ifdef LSR_API
+  virtual DisplayError
+  SetDisplayDeviceConfig(uint64_t display,
+                         SDMDisplayDeviceConfig sdm_display_device_config) {
+    return kErrorNone;
+  };
+#else
+  // Stub: SDMDisplayDeviceConfig is only functional when LSR_API is defined.
+  // This definition exists solely to allow compilation without LSR_API.
+  struct SDMDisplayDeviceConfig {
+    int32_t temp;  // Placeholder; not functionally used without LSR_API
+  };
+
+  virtual DisplayError
+  SetDisplayDeviceConfigEx(uint64_t display,
+                           SDMDisplayDeviceConfig sdm_display_device_config) {
+    return kErrorNone;
+  };
+#endif
+
+  /**
+   * Register a sideband callback with extended interface type support.
+   *
+   * @param cb: Callback interface for sideband compositor operations
+   * @param enable: True to register, false to unregister the callback
+   * @param intf_type: Type of sideband callback client interface
+   *
+   * @return: void
+   */
+  virtual void RegisterSideBandCallbackEx(SDMSideBandCompositorCbIntf *cb,
+                                          bool enable,
+                                          SideBandCallbackClient intf_type) {
+    // Default: delegate to base registration, ignoring intf_type
+    RegisterSideBandCallback(cb, enable);
+  };
 };
 
 } // namespace sdm

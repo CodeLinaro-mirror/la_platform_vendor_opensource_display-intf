@@ -18,11 +18,11 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * ​​​​​Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
+
 #ifndef __SDM_DISPLAY_INTF_SETTINGS_H__
 #define __SDM_DISPLAY_INTF_SETTINGS_H__
 
@@ -447,6 +447,15 @@ public:
   virtual int GetNotifyEptConfig(uint64_t display) = 0;
 
   virtual DisplayError PerformCacConfig(uint64_t disp_id, CacConfig cac_config, bool enable) = 0;
+
+  virtual DisplayError GetDisplayBrightnessSupport(Display display, bool *outSupport) = 0;
+
+  virtual DisplayError SetHdrCapabilities(uint64_t display,
+                                          const std::vector<Hdr> &hdr_types,
+                                          float max_avg_luminance,
+                                          float min_luminance) {
+    return kErrorNone;
+  }
 };
 
 } // namespace sdm

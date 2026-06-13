@@ -365,9 +365,6 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   NV12_UBWC_FLEX_2_BATCH = 0x128,
   NV12_UBWC_FLEX_4_BATCH = 0x129,
   NV12_UBWC_FLEX_8_BATCH = 0x130,
-  NV12_FLEX_2_BATCH = 0x140,
-  NV12_FLEX_4_BATCH = 0x141,
-  NV12_FLEX_8_BATCH = 0x142,
 
   /* Camera MipMap Formats */
   NV12_UBWC_MIPMAP = 0x223,
@@ -383,6 +380,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   TP10_UBWC_FLEX_2_BATCH = 0x155,
   TP10_UBWC_FLEX_4_BATCH = 0x156,
   TP10_UBWC_FLEX_8_BATCH = 0x157,
+  /* --------------------------------------------------------------------------------*/
 
   BAYER16_UBWC = 0x158,
   TBAYER10_UBWC = 0x159,
@@ -392,6 +390,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   P210_UBWC_FLEX_2_BATCH = 0x163,
   P210_UBWC_FLEX_4_BATCH = 0x164,
   P210_UBWC_FLEX_8_BATCH = 0x165,
+
 } vendor_qti_hardware_display_common_PixelFormat;
 
 #endif  // __COMMON_PIXELFORMAT_H__

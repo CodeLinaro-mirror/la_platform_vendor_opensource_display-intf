@@ -398,7 +398,18 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Default value is 0.
    * Functions supported: getMetadata, setMetadata
    */
-  DISPARITY_PHASE = 10054
+  DISPARITY_PHASE = 10054,
+   /**
+   * Custom Tuning metadata set by camera and read by video,
+   * as defined in vendor_qti_hardware_display_common_CustomTuningMetadata
+   * Functions supported: getMetadata, setMetadata
+   */
+  CUSTOM_TUNING_METADATA = 10055,
+  /**
+   * Dynamic HDR metadata used in HDR10+ pipelines
+   * Functions supported: getMetadata, setMetadata
+   */
+  SMPTE2094_40 = 10056,
 
 } vendor_qti_hardware_display_common_MetadataType;
 

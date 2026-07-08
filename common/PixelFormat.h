@@ -185,6 +185,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   RAW10 = 0x25,
   RAW12 = 0x26,
   RAW14 = 0x144,
+  RAW14_1 = 0x2C, // Added in AOSP
   RGBA_1010102 = 0x2B,
   Y8 = 0x20203859,
   Y16 = 0x20363159,

@@ -167,6 +167,10 @@ public:
                          SDMDisplayDeviceConfig sdm_display_device_config) {
     return kErrorNone;
   };
+
+  virtual DisplayError GetDisplayViewMode(uint64_t display, SDMDisplayViewMode *view_mode) {
+    return kErrorNone;
+  };
 #else
   // Stub: SDMDisplayDeviceConfig is only functional when LSR_API is defined.
   // This definition exists solely to allow compilation without LSR_API.

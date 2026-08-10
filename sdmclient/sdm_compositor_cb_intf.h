@@ -49,6 +49,8 @@ public:
                              const SDMVsyncPeriodChangeTimeline &timeline) {}
 
   virtual void onHdcpLevelsChanged(uint64_t display, int32_t min_enc_level) {}
+
+  virtual void OnSelfRefresh(uint64_t in_display) {}
 };
 
 } // namespace sdm

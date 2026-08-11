@@ -18,9 +18,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2023 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Technologies, Inc. are provided under the following
+ * license: Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 #ifndef __SDM_DISPLAY_INTF_LIFECYCLE_H__
@@ -150,8 +149,10 @@ public:
   virtual DisplayError TryDrawMethod(Display display,
                                      DisplayDrawMethod drawMethod) = 0;
 
-  virtual void CompositorSync(CompositorSyncType syncType) = 0;
+  virtual void CompositorSync(CompositorSyncType syncType) {}
 
+  // Per-display overload for MULTI_THREADED_PRESENT support.
+  virtual void CompositorSync(uint64_t display, CompositorSyncType syncType) {}
 #ifdef LSR_API
   virtual DisplayError
   SetDisplayDeviceConfig(uint64_t display,

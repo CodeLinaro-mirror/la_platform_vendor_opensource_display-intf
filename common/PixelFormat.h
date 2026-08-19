@@ -185,6 +185,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   RAW10 = 0x25,
   RAW12 = 0x26,
   RAW14 = 0x144,
+  RAW14_1 = 0x2C, // Added in AOSP
   RGBA_1010102 = 0x2B,
   Y8 = 0x20203859,
   Y16 = 0x20363159,
@@ -365,6 +366,9 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   NV12_UBWC_FLEX_2_BATCH = 0x128,
   NV12_UBWC_FLEX_4_BATCH = 0x129,
   NV12_UBWC_FLEX_8_BATCH = 0x130,
+  NV12_FLEX_2_BATCH = 0x140,
+  NV12_FLEX_4_BATCH = 0x141,
+  NV12_FLEX_8_BATCH = 0x142,
 
   /* Camera MipMap Formats */
   NV12_UBWC_MIPMAP = 0x223,

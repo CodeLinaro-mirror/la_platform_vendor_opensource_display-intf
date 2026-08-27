@@ -185,6 +185,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   RAW10 = 0x25,
   RAW12 = 0x26,
   RAW14 = 0x144,
+  RAW14_1 = 0x2C, // Added in AOSP
   RGBA_1010102 = 0x2B,
   Y8 = 0x20203859,
   Y16 = 0x20363159,
@@ -344,7 +345,6 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
    * RGB101010_UBWC_FSC
    * YCbCr_422_I_10BIT
    * YCbCr_422_I_10BIT_COMPRESSED
-   * YCbCr_420_SP_4R_UBWC
    **/
 
   /* Explicit UBWC formats are removed - set UBWC flag with corresponding linear
@@ -365,6 +365,9 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   NV12_UBWC_FLEX_2_BATCH = 0x128,
   NV12_UBWC_FLEX_4_BATCH = 0x129,
   NV12_UBWC_FLEX_8_BATCH = 0x130,
+  NV12_FLEX_2_BATCH = 0x140,
+  NV12_FLEX_4_BATCH = 0x141,
+  NV12_FLEX_8_BATCH = 0x142,
 
   /* Camera MipMap Formats */
   NV12_UBWC_MIPMAP = 0x223,
@@ -375,8 +378,23 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   YCBCR_P010_HEIF = 0x151, // YCBCR_P010_512
   YCBCR_P010_1024 = 0x152,
   NV12_1024 = 0x153,
+
+  TP10_UBWC_FLEX = 0x154,
+  TP10_UBWC_FLEX_2_BATCH = 0x155,
+  TP10_UBWC_FLEX_4_BATCH = 0x156,
+  TP10_UBWC_FLEX_8_BATCH = 0x157,
   /* --------------------------------------------------------------------------------*/
 
+  BAYER16_UBWC = 0x158,
+  TBAYER10_UBWC = 0x159,
+  GBR16_UBWC = 0x160,
+  GBRTP10_UBWC = 0x161,
+  P210_UBWC_FLEX = 0x162,
+  P210_UBWC_FLEX_2_BATCH = 0x163,
+  P210_UBWC_FLEX_4_BATCH = 0x164,
+  P210_UBWC_FLEX_8_BATCH = 0x165,
+
+  YCbCr_420_SP_4R_UBWC = 0x7FA30C07,
 } vendor_qti_hardware_display_common_PixelFormat;
 
 #endif  // __COMMON_PIXELFORMAT_H__

@@ -18,9 +18,8 @@
  */
 
 /*
- * Changes from Qualcomm Innovation Center are provided under the following license:
- *
- * Copyright (c) 2022-2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Changes from Qualcomm Technologies, Inc. are provided under the following
+ * license: Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
 #ifndef __SDM_DISPLAY_INTF_DRAWCYCLE_H__
@@ -194,7 +193,7 @@ public:
   virtual DisplayError GetVsyncPeriod(uint64_t display_id,
                                       uint32_t *vsync_period) = 0;
 
-  virtual void Refresh(uint64_t display_id);
+  virtual void Refresh(uint64_t display_id) {}
 
   virtual DisplayError SetClientTarget(uint64_t display, const SnapHandle *target,
                             shared_ptr<Fence> acquire_fence, int32_t dataspace,
@@ -243,6 +242,10 @@ public:
                                              uint32_t frame_interval_ns) = 0;
 
   virtual DisplayError SetFrameIntervalNs(uint64_t display, uint32_t frame_interval_ns) = 0;
+
+  // this function is used to acquire and release display lock, any usage must have this called
+  // twice, first with false to acquire the lock, and once done with true to release the lock
+  virtual void AcquireDisplayLock(uint64_t display, bool release_lock) {}
 };
 
 } // namespace sdm

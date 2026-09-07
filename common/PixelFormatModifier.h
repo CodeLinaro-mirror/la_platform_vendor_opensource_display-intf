@@ -26,6 +26,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormatModifier {
   PIXEL_FORMAT_MODIFIER_FLEX_2_BATCH = 18,
   PIXEL_FORMAT_MODIFIER_FLEX_4_BATCH = 19,
   PIXEL_FORMAT_MODIFIER_FLEX_8_BATCH = 20,
+  PIXEL_FORMAT_MODIFIER_UBWC_LOSSY_2_1 = 21
 } vendor_qti_hardware_display_common_PixelFormatModifier;
 
 #endif  // __COMMON_PIXELFORMATMODIFIER_H__

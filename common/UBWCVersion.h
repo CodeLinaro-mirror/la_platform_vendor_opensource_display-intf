@@ -13,6 +13,7 @@ typedef enum vendor_qti_hardware_display_common_UBWCVersion {
   UBWC_VERSION_5_0 = 0x5,
   UBWC_VERSION_6_0 = 0x6,
   UBWC_VERSION_7_0 = 0x7,
+  UBWC_VERSION_7_1 = 0x8,
   UBWC_VERSION_MAX = 0xFF,
 } vendor_qti_hardware_display_common_UBWCVersion;
 

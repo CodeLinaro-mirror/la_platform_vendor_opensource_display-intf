@@ -345,7 +345,6 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
    * RGB101010_UBWC_FSC
    * YCbCr_422_I_10BIT
    * YCbCr_422_I_10BIT_COMPRESSED
-   * YCbCr_420_SP_4R_UBWC
    **/
 
   /* Explicit UBWC formats are removed - set UBWC flag with corresponding linear
@@ -395,6 +394,7 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   P210_UBWC_FLEX_4_BATCH = 0x164,
   P210_UBWC_FLEX_8_BATCH = 0x165,
 
+  YCbCr_420_SP_4R_UBWC = 0x7FA30C07,
 } vendor_qti_hardware_display_common_PixelFormat;
 
 #endif  // __COMMON_PIXELFORMAT_H__

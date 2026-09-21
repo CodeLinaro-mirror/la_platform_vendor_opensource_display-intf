@@ -29,6 +29,7 @@
 #include <unordered_set>
 
 #include <SnapHandle.h>
+#include <color_metadata.h>
 #include <core/buffer_allocator.h>
 #include <core/sdm_types.h>
 
@@ -38,6 +39,38 @@ using SnapHandle = vendor::qti::hardware::display::snapalloc::SnapHandle;
 
 class SDMDisplayLayerBuilderIntf {
 public:
+#ifndef LSR_API
+  // Stub: the following structures are only functional when LSR_API is defined.
+  // These definitions exist solely to allow compilation without LSR_API.
+  struct SDMRenderLayerReferenceSpaceType {
+    int32_t temp;
+  };
+
+  struct SDMCompositionLayerType {
+    int32_t temp;
+  };
+
+  struct SDMLayerPose {
+    int32_t temp;
+  };
+
+  struct SDMLayerQuadSize {
+    int32_t temp;
+  };
+
+  struct SDMLayerFrustum {
+    int32_t temp;
+  };
+
+  struct SDMLayerPlaneEquation {
+    int32_t temp;
+  };
+
+  struct SDMLayerVisibilityType {
+    int32_t temp;
+  };
+#endif
+
   virtual ~SDMDisplayLayerBuilderIntf() {}
 
   virtual DisplayError Init(BufferAllocator *buffer_allocator,
@@ -189,7 +222,6 @@ public:
     return kErrorNone;
   };
 
-#ifdef LSR_API
   virtual DisplayError SetRenderLayerReferenceSpaceType(
       uint64_t display, int64_t layer,
       SDMRenderLayerReferenceSpaceType reference_layer_space_type) {
@@ -228,7 +260,11 @@ public:
                          SDMLayerVisibilityType layer_visibility_type) {
     return kErrorNone;
   };
-#endif
+
+  virtual DisplayError SetLayerLuts(uint64_t display, int64_t layer,
+                                    Lut3d *luts) {
+    return kErrorNone;
+  };
 };
 
 } // namespace sdm

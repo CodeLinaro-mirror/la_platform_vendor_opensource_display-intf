@@ -11,6 +11,7 @@
 typedef enum vendor_qti_hardware_display_common_CustomTuningMetadataFlags {
   QTI_CUSTOM_TUNING_METADATA_TYPE_NONE = 0,
   QTI_CUSTOM_TUNING_METADATA_TYPE_A    = 1,
+  QTI_CUSTOM_TUNING_METADATA_TYPE_B    = 2,
 } vendor_qti_hardware_display_common_CustomTuningMetadataFlags;
 
 typedef struct vendor_qti_hardware_display_common_CustomTuningMetadata {

@@ -468,6 +468,10 @@ public:
     return 0;
   };
 
+  virtual DisplayError SetDisplayBrightnessNits(Display display, float brightness_nits) {
+    return kErrorNone;
+  }
+
 };
 
 } // namespace sdm

@@ -102,6 +102,9 @@ typedef enum vendor_qti_hardware_display_common_BufferUsage : uint64_t {
   /* Buffer used for trusted VM use case */
   QTI_PRIVATE_TRUSTED_VM = 1ULL << 53,
 
+  /* Buffer used by USB Camera HAL */
+  QTI_PRIVATE_USB_CAMERA = 1ULL << 54,
+
   /* UBWC - NV12 4R */
   QTI_ALLOC_UBWC_4R = 1ULL << 55,
 

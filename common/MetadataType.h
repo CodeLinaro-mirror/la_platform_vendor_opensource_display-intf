@@ -127,6 +127,11 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Functions supported: getMetadata
    */
   STRIDE = 23,
+  /**
+   * SMPTE ST 2094-50 dynamic HDR metadata as a uint8_t byte array.
+   * Functions supported: getMetadata, setMetadata
+   */
+  SMPTE2094_50 = 24,
   // Qti defined metadata types - start from 10000
   /**
    * Per frame VT timestamp used by camera.
@@ -399,7 +404,7 @@ typedef enum vendor_qti_hardware_display_common_MetadataType {
    * Functions supported: getMetadata, setMetadata
    */
   DISPARITY_PHASE = 10054,
-   /**
+  /**
    * Custom Tuning metadata set by camera and read by video,
    * as defined in vendor_qti_hardware_display_common_CustomTuningMetadata
    * Functions supported: getMetadata, setMetadata

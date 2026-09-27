@@ -52,6 +52,17 @@ enum SideBandCallbackClient {
 
 class SDMDisplayLifeCycleIntf {
 public:
+#ifndef LSR_API
+  // Stub: the following structures are only functional when LSR_API is defined.
+  // These definitions exist solely to allow compilation without LSR_API.
+  struct SDMDisplayDeviceConfig {
+    int32_t temp;  // Placeholder; not functionally used without LSR_API
+  };
+
+  enum SDMDisplayViewMode {
+    kViewModeTemp = 0  // Placeholder
+  };
+#endif
   SDMDisplayLifeCycleIntf() {}
   virtual ~SDMDisplayLifeCycleIntf(){};
 
@@ -161,25 +172,12 @@ public:
 
   // Per-display overload for MULTI_THREADED_PRESENT support.
   virtual void CompositorSync(uint64_t display, CompositorSyncType syncType) {}
-#ifdef LSR_API
+
   virtual DisplayError
   SetDisplayDeviceConfig(uint64_t display,
                          SDMDisplayDeviceConfig sdm_display_device_config) {
     return kErrorNone;
   };
-#else
-  // Stub: SDMDisplayDeviceConfig is only functional when LSR_API is defined.
-  // This definition exists solely to allow compilation without LSR_API.
-  struct SDMDisplayDeviceConfig {
-    int32_t temp;  // Placeholder; not functionally used without LSR_API
-  };
-
-  virtual DisplayError
-  SetDisplayDeviceConfigEx(uint64_t display,
-                           SDMDisplayDeviceConfig sdm_display_device_config) {
-    return kErrorNone;
-  };
-#endif
 
   /**
    * Register a sideband callback with extended interface type support.
@@ -195,6 +193,10 @@ public:
                                           SideBandCallbackClient intf_type) {
     // Default: delegate to base registration, ignoring intf_type
     RegisterSideBandCallback(cb, enable);
+  };
+
+  virtual DisplayError GetDisplayViewMode(uint64_t display, SDMDisplayViewMode *view_mode) {
+    return kErrorNone;
   };
 };
 

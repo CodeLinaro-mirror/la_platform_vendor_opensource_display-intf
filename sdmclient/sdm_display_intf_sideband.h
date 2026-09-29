@@ -97,6 +97,10 @@ public:
     // Default: delegate to PostBuffer, ignoring owner
     return PostBuffer(cwb_config, buffer, display_type);
   }
+
+  virtual DisplayError SetVirtualDispType(SDMVirtualDispType disp_type) {
+    return kErrorNotSupported;
+  }
 };
 
 } //  namespace sdm

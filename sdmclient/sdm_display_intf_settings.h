@@ -18,7 +18,7 @@
  */
 
 /*
- * ​​​​​Changes from Qualcomm Technologies, Inc. are provided under the following license:
+ * Changes from Qualcomm Technologies, Inc. are provided under the following license:
  * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  * SPDX-License-Identifier: BSD-3-Clause-Clear
  */
@@ -441,7 +441,7 @@ public:
   virtual DisplayError GetActiveBuiltinDisplay(uint64_t *disp_id) = 0;
 
   virtual int GetDisplayConfigGroup(uint64_t display, DisplayConfigGroupInfo variable_config) = 0;
-  
+
   virtual DisplayError SetupVRRConfig(uint64_t display_id) = 0;
 
   virtual int GetNotifyEptConfig(uint64_t display) = 0;
@@ -456,6 +456,22 @@ public:
                                           float min_luminance) {
     return kErrorNone;
   }
+  virtual DisplayError PerformDynamicCac(uint64_t disp_id,
+                                         DynamicCacV2Config cac_config,
+                                         bool enable) {
+    return kErrorNone;
+  }
+
+  virtual int GetDisplayConfigGroup(uint64_t display,
+                                    DisplayConfigGroupInfo variable_config,
+                                    uint32_t fps) {
+    return 0;
+  };
+
+  virtual DisplayError SetDisplayBrightnessNits(Display display, float brightness_nits) {
+    return kErrorNone;
+  }
+
 };
 
 } // namespace sdm

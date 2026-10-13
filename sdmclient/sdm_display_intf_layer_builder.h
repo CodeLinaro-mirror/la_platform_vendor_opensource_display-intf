@@ -29,6 +29,7 @@
 #include <unordered_set>
 
 #include <SnapHandle.h>
+#include <color_metadata.h>
 #include <core/buffer_allocator.h>
 #include <core/sdm_types.h>
 
@@ -38,6 +39,38 @@ using SnapHandle = vendor::qti::hardware::display::snapalloc::SnapHandle;
 
 class SDMDisplayLayerBuilderIntf {
 public:
+#ifndef LSR_API
+  // Stub: the following structures are only functional when LSR_API is defined.
+  // These definitions exist solely to allow compilation without LSR_API.
+  struct SDMRenderLayerReferenceSpaceType {
+    int32_t temp;
+  };
+
+  struct SDMCompositionLayerType {
+    int32_t temp;
+  };
+
+  struct SDMLayerPose {
+    int32_t temp;
+  };
+
+  struct SDMLayerQuadSize {
+    int32_t temp;
+  };
+
+  struct SDMLayerFrustum {
+    int32_t temp;
+  };
+
+  struct SDMLayerPlaneEquation {
+    int32_t temp;
+  };
+
+  struct SDMLayerVisibilityType {
+    int32_t temp;
+  };
+#endif
+
   virtual ~SDMDisplayLayerBuilderIntf() {}
 
   virtual DisplayError Init(BufferAllocator *buffer_allocator,
@@ -186,6 +219,50 @@ public:
   virtual DisplayError SetLayerCornerRadius(uint64_t display_id,
                                             int64_t layer_id,
                                             CornerRadius corner_radius) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetRenderLayerReferenceSpaceType(
+      uint64_t display, int64_t layer,
+      SDMRenderLayerReferenceSpaceType reference_layer_space_type) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetCompositionLayerType(uint64_t display, int64_t layer,
+                          SDMCompositionLayerType comp_layer_type) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerPose(uint64_t display, int64_t layer,
+                                    SDMLayerPose layer_pose) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerQuadSize(uint64_t display, int64_t layer,
+                                        SDMLayerQuadSize layer_quad_size) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerFrustum(uint64_t display, int64_t layer,
+                                       SDMLayerFrustum layer_frustum) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetLayerPlaneEquation(uint64_t display, int64_t layer,
+                        SDMLayerPlaneEquation plane_equation) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError
+  SetLayerVisibilityType(uint64_t display, int64_t layer,
+                         SDMLayerVisibilityType layer_visibility_type) {
+    return kErrorNone;
+  };
+
+  virtual DisplayError SetLayerLuts(uint64_t display, int64_t layer,
+                                    Lut3d *luts) {
     return kErrorNone;
   };
 };

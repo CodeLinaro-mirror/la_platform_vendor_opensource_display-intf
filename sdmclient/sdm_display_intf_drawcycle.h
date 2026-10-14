@@ -246,6 +246,11 @@ public:
   // this function is used to acquire and release display lock, any usage must have this called
   // twice, first with false to acquire the lock, and once done with true to release the lock
   virtual void AcquireDisplayLock(uint64_t display, bool release_lock) {}
+
+  virtual DisplayError SetDisplayPoseLatchOffset(uint64_t display,
+                                                 int64_t time_ns) {
+    return kErrorNone;
+  }
 };
 
 } // namespace sdm

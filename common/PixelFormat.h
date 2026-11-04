@@ -395,6 +395,19 @@ typedef enum vendor_qti_hardware_display_common_PixelFormat : uint32_t {
   P210_UBWC_FLEX_8_BATCH = 0x165,
 
   YCbCr_420_SP_4R_UBWC = 0x7FA30C07,
+
+  /* G016: 16-bit per sample YUV 4:2:0 semi-planar format (similar to P010) */
+  G016 = 0x166,
+  G016_UBWC = 0x167,
+
+  /* G216: 16-bit per sample YUV 4:2:2 semi-planar format (similar to P210) */
+  G216 = 0x168,
+  G216_UBWC = 0x169,
+
+  RGB_9E5 = 0x170,
+  RGB_9E5_UBWC = 0x171,
+
+  RGB111110_F = 0x172
 } vendor_qti_hardware_display_common_PixelFormat;
 
 #endif  // __COMMON_PIXELFORMAT_H__

@@ -59,7 +59,8 @@ inline SnapHandle *snap_handle_create(int num_fds, int num_ints) {
     errno = EINVAL;
     return NULL;
   }
-  size_t handle_size = sizeof(SnapHandle) + (sizeof(int) * (num_fds + num_ints));
+  size_t num_values = static_cast<size_t>(num_fds) + static_cast<size_t>(num_ints);
+  size_t handle_size = sizeof(SnapHandle) + sizeof(int) * num_values;
   SnapHandle *h = static_cast<SnapHandle *>(malloc(handle_size));
   if (h) {
     h->version = sizeof(SnapHandle);
